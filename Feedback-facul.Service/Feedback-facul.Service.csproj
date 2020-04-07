@@ -51,8 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aluno\AlunoService.cs" />
-    <Compile Include="Aluno\IAlunoService.cs" />
+    <Compile Include="Alunos\AlunoService.cs" />
+    <Compile Include="Alunos\IAlunoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Professor\" />

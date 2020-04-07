@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feedback_facul.Service.Aluno
+namespace Feedback_facul.Service.Alunos
 {
     public interface IAlunoService
     {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Feedback_facul.Model.Alunos;
 
-namespace Feedback_facul.Data.Aluno
+namespace Feedback_facul.Data.Alunos
 {
     public class AlunoContext
     {
@@ -13,14 +14,16 @@ namespace Feedback_facul.Data.Aluno
         {
             try
             {
-                var aluno = new Feedback_facul.Model.Aluno.Aluno();
-                aluno.Nome = "Luan";
-                aluno.Idade = DateTime.Parse("08-24-1997");
-                aluno.Matricula = "01";
+                var aluno = new Aluno
+                {
+                    Nome = "Luan",
+                    Idade = DateTime.Parse("2020-05-08"),
+                    Matricula = "01"
+                };
                 dbContext.Alunos.Add(aluno);
                 dbContext.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
