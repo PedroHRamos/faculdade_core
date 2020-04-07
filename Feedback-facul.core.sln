@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feedback-facul.core", "Feedback-facul.core\Feedback-facul.core.csproj", "{6A72A506-698A-4B0F-A4BD-9946FE0043BC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{78D99B3C-B093-4AF4-BACA-1B9E62D9C475} = {78D99B3C-B093-4AF4-BACA-1B9E62D9C475}
+		{EEF016DA-D880-4074-A335-990694DF91D8} = {EEF016DA-D880-4074-A335-990694DF91D8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feedback-facul.Model", "Feedback-facul.Model\Feedback-facul.Model.csproj", "{EEF016DA-D880-4074-A335-990694DF91D8}"
 EndProject

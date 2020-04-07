@@ -214,6 +214,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +276,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Aluno\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -304,6 +306,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feedback-facul.DTO\Feedback-facul.DTO.csproj">
+      <Project>{695b6911-b778-4111-bf22-8351db5b7509}</Project>
+      <Name>Feedback-facul.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feedback-facul.Service\Feedback-facul.Service.csproj">
+      <Project>{3974a367-0ceb-42e8-987d-0e3a875b0b8a}</Project>
+      <Name>Feedback-facul.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feedback-facul.Util\Feedback-facul.Util.csproj">
+      <Project>{4251879b-7821-4a80-adcb-2b82e4f5f703}</Project>
+      <Name>Feedback-facul.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

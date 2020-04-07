@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3974A367-0CEB-42E8-987D-0E3A875B0B8A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Feedback_facul.Service</RootNamespace>
     <AssemblyName>Feedback-facul.Service</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,8 +32,48 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aluno\AlunoService.cs" />
+    <Compile Include="Aluno\IAlunoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Professor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feedback-facul.Data\Feedback-facul.Data.csproj">
+      <Project>{78d99b3c-b093-4af4-baca-1b9e62d9c475}</Project>
+      <Name>Feedback-facul.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feedback-facul.DTO\Feedback-facul.DTO.csproj">
+      <Project>{695b6911-b778-4111-bf22-8351db5b7509}</Project>
+      <Name>Feedback-facul.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feedback-facul.Model\Feedback-facul.Model.csproj">
+      <Project>{eef016da-d880-4074-a335-990694df91d8}</Project>
+      <Name>Feedback-facul.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feedback-facul.Util\Feedback-facul.Util.csproj">
+      <Project>{4251879b-7821-4a80-adcb-2b82e4f5f703}</Project>
+      <Name>Feedback-facul.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
