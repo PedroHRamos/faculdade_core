@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13acfdd6fd1743dd8feec2edd406e8c8" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="glassDbModel.AlunoMatriculado" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Avaliacao" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Categoria" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Consistencia" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Curso" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Instituicao" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Parger" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Quesito" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="glassDbModel.Usuario" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_cu__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_in__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_us__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_in__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_qu__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_us__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.FK__tb_instit__id_ca__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.tb_consistencia_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.tb_quesito_curso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

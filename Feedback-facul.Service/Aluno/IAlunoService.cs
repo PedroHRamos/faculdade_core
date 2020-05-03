@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Feedback_facul.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Feedback_facul.Service.Aluno
 {
     public interface IAlunoService
     {
-        void SalvarAluno(string nome, DateTime idade, string matricula);
+        void SalvarAluno(AlunoMatriculadoDTO aluno);
     }
 }
