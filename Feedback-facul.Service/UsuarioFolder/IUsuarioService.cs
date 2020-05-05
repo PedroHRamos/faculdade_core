@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Feedback_facul.Service.UsuarioFolder
 {
-    interface IUsuarioService
+    public interface IUsuarioService
     {
 
         string SalvarUsuario(UsuarioDTO usuario);
