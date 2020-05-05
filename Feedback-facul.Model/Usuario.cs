@@ -28,6 +28,8 @@ namespace Feedback_facul.Model
         public string estado { get; set; }
         public string cidade { get; set; }
         public string tipo_usuario { get; set; }
+        public string username { get; set; }
+        public string senha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlunoMatriculado> tb_aluno_matriculado { get; set; }
