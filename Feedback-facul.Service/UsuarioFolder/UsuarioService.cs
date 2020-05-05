@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Feedback_facul.Model;
 
 namespace Feedback_facul.Service.UsuarioFolder
 {
@@ -17,7 +18,7 @@ namespace Feedback_facul.Service.UsuarioFolder
         {
             try
             {
-                Usuario usuario = new Usuario();
+                Usuario usuarioTemp = new Usuario();
                 //AlunoMatriculado aluno = new AlunoMatriculado();
                 //aluno.id_usuario = usuario;
                 //aluno.id_instituicao = instituicao;
