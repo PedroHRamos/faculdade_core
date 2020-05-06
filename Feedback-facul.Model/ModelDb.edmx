@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="glassDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_aluno_matriculado">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_instituicao" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_instituicao" Type="int" Nullable="false" />
+          <Property Name="id_curso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_avaliacao">
+          <Key>
+            <PropertyRef Name="id_quesito" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_instituicao" />
+          </Key>
+          <Property Name="id_quesito" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_instituicao" Type="int" Nullable="false" />
+          <Property Name="estrelas" Type="int" Nullable="false" />
+          <Property Name="comentario" Type="varchar" MaxLength="250" />
+          <Property Name="data_inicial" Type="datetime" Nullable="false" />
+          <Property Name="data_ultima_atualizacao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tb_consistencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="consistencia_cod" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="150" />
+          <Property Name="situacao" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tb_consistencia_categoria">
+          <Key>
+            <PropertyRef Name="id_consistencia" />
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_consistencia" Type="int" Nullable="false" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_curso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="tipo_curso" Type="varchar" MaxLength="1" />
+          <Property Name="formacao" Type="varchar" MaxLength="1" />
+          <Property Name="quantidade_semestres" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_instituicao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="150" />
+          <Property Name="estado" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="rua" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="campus" Type="varchar" MaxLength="50" />
+          <Property Name="imagem" Type="varchar" MaxLength="250" />
+          <Property Name="id_categoria" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_parger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parger_cod" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="150" />
+          <Property Name="situacao" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tb_quesito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="150" />
+          <Property Name="situacao" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tb_quesito_curso">
+          <Key>
+            <PropertyRef Name="id_quesito" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_quesito" Type="int" Nullable="false" />
+          <Property Name="id_curso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="cpf" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="nascimento" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="70" />
+          <Property Name="cidade" Type="varchar" MaxLength="70" />
+          <Property Name="tipo_usuario" Type="varchar" MaxLength="1" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="512" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tb_aluno___id_cu__48CFD27E">
+          <End Role="tb_curso" Type="Self.tb_curso" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="Self.tb_aluno_matriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_curso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_aluno___id_in__47DBAE45">
+          <End Role="tb_instituicao" Type="Self.tb_instituicao" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="Self.tb_aluno_matriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_instituicao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="id_instituicao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_aluno___id_us__46E78A0C">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="Self.tb_aluno_matriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_in__534D60F1">
+          <End Role="tb_instituicao" Type="Self.tb_instituicao" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="Self.tb_avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_instituicao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_instituicao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_qu__5165187F">
+          <End Role="tb_quesito" Type="Self.tb_quesito" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="Self.tb_avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_quesito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_quesito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_us__52593CB8">
+          <End Role="tb_usuario" Type="Self.tb_usuario" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="Self.tb_avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_consis__id_ca__3D5E1FD2">
+          <End Role="tb_categoria" Type="Self.tb_categoria" Multiplicity="1" />
+          <End Role="tb_consistencia_categoria" Type="Self.tb_consistencia_categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_consistencia_categoria">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_consis__id_co__3C69FB99">
+          <End Role="tb_consistencia" Type="Self.tb_consistencia" Multiplicity="1" />
+          <End Role="tb_consistencia_categoria" Type="Self.tb_consistencia_categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_consistencia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_consistencia_categoria">
+              <PropertyRef Name="id_consistencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_instit__id_ca__403A8C7D">
+          <End Role="tb_categoria" Type="Self.tb_categoria" Multiplicity="0..1" />
+          <End Role="tb_instituicao" Type="Self.tb_instituicao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_instituicao">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_quesit__id_cu__4E88ABD4">
+          <End Role="tb_curso" Type="Self.tb_curso" Multiplicity="1" />
+          <End Role="tb_quesito_curso" Type="Self.tb_quesito_curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_curso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_quesito_curso">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_quesit__id_qu__4D94879B">
+          <End Role="tb_quesito" Type="Self.tb_quesito" Multiplicity="1" />
+          <End Role="tb_quesito_curso" Type="Self.tb_quesito_curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_quesito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_quesito_curso">
+              <PropertyRef Name="id_quesito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="glassDbModelStoreContainer">
+          <EntitySet Name="tb_aluno_matriculado" EntityType="Self.tb_aluno_matriculado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_avaliacao" EntityType="Self.tb_avaliacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_categoria" EntityType="Self.tb_categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_consistencia" EntityType="Self.tb_consistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_consistencia_categoria" EntityType="Self.tb_consistencia_categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_curso" EntityType="Self.tb_curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_instituicao" EntityType="Self.tb_instituicao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_parger" EntityType="Self.tb_parger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_quesito" EntityType="Self.tb_quesito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_quesito_curso" EntityType="Self.tb_quesito_curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_usuario" EntityType="Self.tb_usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_aluno___id_cu__48CFD27E" Association="Self.FK__tb_aluno___id_cu__48CFD27E">
+            <End Role="tb_curso" EntitySet="tb_curso" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_aluno___id_in__47DBAE45" Association="Self.FK__tb_aluno___id_in__47DBAE45">
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_aluno___id_us__46E78A0C" Association="Self.FK__tb_aluno___id_us__46E78A0C">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_in__534D60F1" Association="Self.FK__tb_avalia__id_in__534D60F1">
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_qu__5165187F" Association="Self.FK__tb_avalia__id_qu__5165187F">
+            <End Role="tb_quesito" EntitySet="tb_quesito" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_us__52593CB8" Association="Self.FK__tb_avalia__id_us__52593CB8">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_consis__id_ca__3D5E1FD2" Association="Self.FK__tb_consis__id_ca__3D5E1FD2">
+            <End Role="tb_categoria" EntitySet="tb_categoria" />
+            <End Role="tb_consistencia_categoria" EntitySet="tb_consistencia_categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_consis__id_co__3C69FB99" Association="Self.FK__tb_consis__id_co__3C69FB99">
+            <End Role="tb_consistencia" EntitySet="tb_consistencia" />
+            <End Role="tb_consistencia_categoria" EntitySet="tb_consistencia_categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_instit__id_ca__403A8C7D" Association="Self.FK__tb_instit__id_ca__403A8C7D">
+            <End Role="tb_categoria" EntitySet="tb_categoria" />
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_quesit__id_cu__4E88ABD4" Association="Self.FK__tb_quesit__id_cu__4E88ABD4">
+            <End Role="tb_curso" EntitySet="tb_curso" />
+            <End Role="tb_quesito_curso" EntitySet="tb_quesito_curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_quesit__id_qu__4D94879B" Association="Self.FK__tb_quesit__id_qu__4D94879B">
+            <End Role="tb_quesito" EntitySet="tb_quesito" />
+            <End Role="tb_quesito_curso" EntitySet="tb_quesito_curso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="glassDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlunoMatriculado">
+          <Key>
+            <PropertyRef Name="Usuario" />
+            <PropertyRef Name="Instituicao" />
+            <PropertyRef Name="Curso" />
+          </Key>
+          <Property Name="Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Instituicao" Type="Int32" Nullable="false" />
+          <Property Name="Curso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_curso" Relationship="Self.FK__tb_aluno___id_cu__49C3F6B7" FromRole="tb_aluno_matriculado" ToRole="tb_curso" />
+          <NavigationProperty Name="tb_instituicao" Relationship="Self.FK__tb_aluno___id_in__48CFD27E" FromRole="tb_aluno_matriculado" ToRole="tb_instituicao" />
+          <NavigationProperty Name="tb_usuario" Relationship="Self.FK__tb_aluno___id_us__47DBAE45" FromRole="tb_aluno_matriculado" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="Avaliacao">
+          <Key>
+            <PropertyRef Name="id_quesito" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_instituicao" />
+          </Key>
+          <Property Name="id_quesito" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_instituicao" Type="Int32" Nullable="false" />
+          <Property Name="estrelas" Type="Int32" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="data_inicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_ultima_atualizacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_instituicao" Relationship="Self.FK__tb_avalia__id_in__5441852A" FromRole="tb_avaliacao" ToRole="tb_instituicao" />
+          <NavigationProperty Name="tb_quesito" Relationship="Self.FK__tb_avalia__id_qu__52593CB8" FromRole="tb_avaliacao" ToRole="tb_quesito" />
+          <NavigationProperty Name="tb_usuario" Relationship="Self.FK__tb_avalia__id_us__534D60F1" FromRole="tb_avaliacao" ToRole="tb_usuario" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_instituicao" Relationship="Self.FK__tb_instit__id_ca__412EB0B6" FromRole="tb_categoria" ToRole="tb_instituicao" />
+          <NavigationProperty Name="tb_consistencia" Relationship="Self.tb_consistencia_categoria" FromRole="tb_categoria" ToRole="tb_consistencia" />
+        </EntityType>
+        <EntityType Name="Consistencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="consistencia_cod" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_categoria" Relationship="Self.tb_consistencia_categoria" FromRole="tb_consistencia" ToRole="tb_categoria" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_curso" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="formacao" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="quantidade_semestres" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_aluno_matriculado" Relationship="Self.FK__tb_aluno___id_cu__49C3F6B7" FromRole="tb_curso" ToRole="tb_aluno_matriculado" />
+          <NavigationProperty Name="tb_quesito" Relationship="Self.tb_quesito_curso" FromRole="tb_curso" ToRole="tb_quesito" />
+        </EntityType>
+        <EntityType Name="Instituicao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rua" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imagem" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="id_categoria" Type="Int32" />
+          <NavigationProperty Name="tb_aluno_matriculado" Relationship="Self.FK__tb_aluno___id_in__48CFD27E" FromRole="tb_instituicao" ToRole="tb_aluno_matriculado" />
+          <NavigationProperty Name="tb_avaliacao" Relationship="Self.FK__tb_avalia__id_in__5441852A" FromRole="tb_instituicao" ToRole="tb_avaliacao" />
+          <NavigationProperty Name="tb_categoria" Relationship="Self.FK__tb_instit__id_ca__412EB0B6" FromRole="tb_instituicao" ToRole="tb_categoria" />
+        </EntityType>
+        <EntityType Name="Parger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parger_cod" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Quesito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_avaliacao" Relationship="Self.FK__tb_avalia__id_qu__52593CB8" FromRole="tb_quesito" ToRole="tb_avaliacao" />
+          <NavigationProperty Name="tb_curso" Relationship="Self.tb_quesito_curso" FromRole="tb_quesito" ToRole="tb_curso" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_usuario" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_aluno_matriculado" Relationship="Self.FK__tb_aluno___id_us__47DBAE45" FromRole="tb_usuario" ToRole="tb_aluno_matriculado" />
+          <NavigationProperty Name="tb_avaliacao" Relationship="Self.FK__tb_avalia__id_us__534D60F1" FromRole="tb_usuario" ToRole="tb_avaliacao" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__tb_aluno___id_cu__49C3F6B7">
+          <End Role="tb_curso" Type="glassDbModel.Curso" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="glassDbModel.AlunoMatriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_curso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_aluno___id_in__48CFD27E">
+          <End Role="tb_instituicao" Type="glassDbModel.Instituicao" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="glassDbModel.AlunoMatriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_instituicao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="Instituicao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_aluno___id_us__47DBAE45">
+          <End Role="tb_usuario" Type="glassDbModel.Usuario" Multiplicity="1" />
+          <End Role="tb_aluno_matriculado" Type="glassDbModel.AlunoMatriculado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_aluno_matriculado">
+              <PropertyRef Name="Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_in__5441852A">
+          <End Role="tb_instituicao" Type="glassDbModel.Instituicao" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_instituicao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_instituicao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_qu__52593CB8">
+          <End Role="tb_quesito" Type="glassDbModel.Quesito" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_quesito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_quesito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_avalia__id_us__534D60F1">
+          <End Role="tb_usuario" Type="glassDbModel.Usuario" Multiplicity="1" />
+          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_avaliacao">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_instit__id_ca__412EB0B6">
+          <End Role="tb_categoria" Type="glassDbModel.Categoria" Multiplicity="0..1" />
+          <End Role="tb_instituicao" Type="glassDbModel.Instituicao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_instituicao">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tb_consistencia_categoria">
+          <End Role="tb_categoria" Type="glassDbModel.Categoria" Multiplicity="*" />
+          <End Role="tb_consistencia" Type="glassDbModel.Consistencia" Multiplicity="*" />
+        </Association>
+        <Association Name="tb_quesito_curso">
+          <End Role="tb_curso" Type="glassDbModel.Curso" Multiplicity="*" />
+          <End Role="tb_quesito" Type="glassDbModel.Quesito" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="glassDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_aluno_matriculado" EntityType="glassDbModel.AlunoMatriculado" />
+          <EntitySet Name="tb_avaliacao" EntityType="glassDbModel.Avaliacao" />
+          <EntitySet Name="tb_categoria" EntityType="glassDbModel.Categoria" />
+          <EntitySet Name="tb_consistencia" EntityType="glassDbModel.Consistencia" />
+          <EntitySet Name="tb_curso" EntityType="glassDbModel.Curso" />
+          <EntitySet Name="tb_instituicao" EntityType="glassDbModel.Instituicao" />
+          <EntitySet Name="tb_parger" EntityType="glassDbModel.Parger" />
+          <EntitySet Name="tb_quesito" EntityType="glassDbModel.Quesito" />
+          <EntitySet Name="tb_usuario" EntityType="glassDbModel.Usuario" />
+          <AssociationSet Name="FK__tb_aluno___id_cu__49C3F6B7" Association="Self.FK__tb_aluno___id_cu__49C3F6B7">
+            <End Role="tb_curso" EntitySet="tb_curso" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_aluno___id_in__48CFD27E" Association="Self.FK__tb_aluno___id_in__48CFD27E">
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_aluno___id_us__47DBAE45" Association="Self.FK__tb_aluno___id_us__47DBAE45">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_in__5441852A" Association="Self.FK__tb_avalia__id_in__5441852A">
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_qu__52593CB8" Association="Self.FK__tb_avalia__id_qu__52593CB8">
+            <End Role="tb_quesito" EntitySet="tb_quesito" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_avalia__id_us__534D60F1" Association="Self.FK__tb_avalia__id_us__534D60F1">
+            <End Role="tb_usuario" EntitySet="tb_usuario" />
+            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_instit__id_ca__412EB0B6" Association="Self.FK__tb_instit__id_ca__412EB0B6">
+            <End Role="tb_categoria" EntitySet="tb_categoria" />
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+          </AssociationSet>
+          <AssociationSet Name="tb_consistencia_categoria" Association="Self.tb_consistencia_categoria">
+            <End Role="tb_categoria" EntitySet="tb_categoria" />
+            <End Role="tb_consistencia" EntitySet="tb_consistencia" />
+          </AssociationSet>
+          <AssociationSet Name="tb_quesito_curso" Association="Self.tb_quesito_curso">
+            <End Role="tb_curso" EntitySet="tb_curso" />
+            <End Role="tb_quesito" EntitySet="tb_quesito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="glassDbModelStoreContainer" CdmEntityContainer="glassDbEntities">
+          <EntitySetMapping Name="tb_aluno_matriculado">
+            <EntityTypeMapping TypeName="glassDbModel.AlunoMatriculado">
+              <MappingFragment StoreEntitySet="tb_aluno_matriculado">
+                <ScalarProperty Name="Usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="Instituicao" ColumnName="id_instituicao" />
+                <ScalarProperty Name="Curso" ColumnName="id_curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_avaliacao">
+            <EntityTypeMapping TypeName="glassDbModel.Avaliacao">
+              <MappingFragment StoreEntitySet="tb_avaliacao">
+                <ScalarProperty Name="id_quesito" ColumnName="id_quesito" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_instituicao" ColumnName="id_instituicao" />
+                <ScalarProperty Name="estrelas" ColumnName="estrelas" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="data_inicial" ColumnName="data_inicial" />
+                <ScalarProperty Name="data_ultima_atualizacao" ColumnName="data_ultima_atualizacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_categoria">
+            <EntityTypeMapping TypeName="glassDbModel.Categoria">
+              <MappingFragment StoreEntitySet="tb_categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_consistencia">
+            <EntityTypeMapping TypeName="glassDbModel.Consistencia">
+              <MappingFragment StoreEntitySet="tb_consistencia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="consistencia_cod" ColumnName="consistencia_cod" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_curso">
+            <EntityTypeMapping TypeName="glassDbModel.Curso">
+              <MappingFragment StoreEntitySet="tb_curso">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="tipo_curso" ColumnName="tipo_curso" />
+                <ScalarProperty Name="formacao" ColumnName="formacao" />
+                <ScalarProperty Name="quantidade_semestres" ColumnName="quantidade_semestres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_instituicao">
+            <EntityTypeMapping TypeName="glassDbModel.Instituicao">
+              <MappingFragment StoreEntitySet="tb_instituicao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="imagem" ColumnName="imagem" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_parger">
+            <EntityTypeMapping TypeName="glassDbModel.Parger">
+              <MappingFragment StoreEntitySet="tb_parger">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parger_cod" ColumnName="parger_cod" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_quesito">
+            <EntityTypeMapping TypeName="glassDbModel.Quesito">
+              <MappingFragment StoreEntitySet="tb_quesito">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="situacao" ColumnName="situacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_usuario">
+            <EntityTypeMapping TypeName="glassDbModel.Usuario">
+              <MappingFragment StoreEntitySet="tb_usuario">
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tb_consistencia_categoria" TypeName="glassDbModel.tb_consistencia_categoria" StoreEntitySet="tb_consistencia_categoria">
+            <EndProperty Name="tb_categoria">
+              <ScalarProperty Name="id" ColumnName="id_categoria" />
+            </EndProperty>
+            <EndProperty Name="tb_consistencia">
+              <ScalarProperty Name="id" ColumnName="id_consistencia" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="tb_quesito_curso" TypeName="glassDbModel.tb_quesito_curso" StoreEntitySet="tb_quesito_curso">
+            <EndProperty Name="tb_curso">
+              <ScalarProperty Name="id" ColumnName="id_curso" />
+            </EndProperty>
+            <EndProperty Name="tb_quesito">
+              <ScalarProperty Name="id" ColumnName="id_quesito" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

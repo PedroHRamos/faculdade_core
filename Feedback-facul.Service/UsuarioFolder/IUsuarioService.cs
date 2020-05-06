@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feedback_facul.Service.Alunos
+namespace Feedback_facul.Service.UsuarioFolder
 {
-    public interface IAlunoService
+    public interface IUsuarioService
     {
-        void SalvarAluno(AlunoMatriculadoDTO aluno);
+
+        string SalvarUsuario(UsuarioDTO usuario);
+
     }
 }
