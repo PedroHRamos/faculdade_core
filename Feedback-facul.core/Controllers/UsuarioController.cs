@@ -19,7 +19,5 @@ namespace Feedback_facul.core.Controllers
         {
             usuarioService.SalvarUsuario(usuario);
         }
-
-
     }
 }

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Feedback_facul.core
 {
@@ -10,6 +12,13 @@ namespace Feedback_facul.core
         public static void Register(HttpConfiguration config)
         {
             // Serviços e configuração da API da Web
+
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            EnableCorsAttribute cors = new EnableCorsAttribute(origins: "*", headers: "*", methods: "*");
+            cors.ExposedHeaders.Add("Content-Disposition");
+            config.EnableCors(cors);
 
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();

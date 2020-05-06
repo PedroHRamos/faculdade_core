@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Feedback_facul.core.Controllers
 {
@@ -13,7 +14,7 @@ namespace Feedback_facul.core.Controllers
     {
         private readonly IAlunoService _alunoService = new AlunoService();
 
-        // [Route("aluno")]
+        [Route("aluno")]
         [HttpPost]
         public void SalvarAluno([FromBody] AlunoMatriculadoDTO aluno)
         {
