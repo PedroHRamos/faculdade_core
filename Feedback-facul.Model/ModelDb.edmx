@@ -26,8 +26,8 @@
           <Property Name="id_instituicao" Type="int" Nullable="false" />
           <Property Name="estrelas" Type="int" Nullable="false" />
           <Property Name="comentario" Type="varchar" MaxLength="250" />
-          <Property Name="data_inicial" Type="datetime" Nullable="false" />
-          <Property Name="data_ultima_atualizacao" Type="datetime" />
+          <Property Name="data_inicial" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="data_ultima_atualizacao" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="tb_categoria">
           <Key>
@@ -111,7 +111,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="cpf" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="nascimento" Type="datetime" Nullable="false" />
+          <Property Name="nascimento" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="estado" Type="varchar" MaxLength="70" />
           <Property Name="cidade" Type="varchar" MaxLength="70" />
           <Property Name="tipo_usuario" Type="varchar" MaxLength="1" />
@@ -335,8 +335,8 @@
           <Property Name="id_instituicao" Type="Int32" Nullable="false" />
           <Property Name="estrelas" Type="Int32" Nullable="false" />
           <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="data_inicial" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="data_ultima_atualizacao" Type="DateTime" Precision="3" />
+          <Property Name="data_inicial" Type="DateTime" Precision="7" Nullable="false" />
+          <Property Name="data_ultima_atualizacao" Type="DateTime" Precision="7" />
           <NavigationProperty Name="tb_instituicao" Relationship="Self.FK__tb_avalia__id_in__5441852A" FromRole="tb_avaliacao" ToRole="tb_instituicao" />
           <NavigationProperty Name="tb_quesito" Relationship="Self.FK__tb_avalia__id_qu__52593CB8" FromRole="tb_avaliacao" ToRole="tb_quesito" />
           <NavigationProperty Name="tb_usuario" Relationship="Self.FK__tb_avalia__id_us__534D60F1" FromRole="tb_avaliacao" ToRole="tb_usuario" />
@@ -417,7 +417,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nascimento" Type="DateTime" Precision="7" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="cidade" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="tipo_usuario" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />

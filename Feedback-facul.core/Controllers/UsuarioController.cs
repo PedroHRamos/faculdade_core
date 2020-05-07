@@ -8,6 +8,7 @@ using Feedback_facul.Service.UsuarioFolder;
 
 namespace Feedback_facul.core.Controllers
 {
+    [RoutePrefix("usuario")]
     public class UsuarioController: ApiController
     {
 
