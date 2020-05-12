@@ -26,14 +26,14 @@ namespace Feedback_facul.Service
         {
             AutoMapper.Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<AlunoMatriculadoDTO, AlunoMatriculado>()
-                    .ForMember(vm => vm.tb_usuario, map => map.MapFrom(m => m.Usuario))
-                    .ForMember(vm => vm.tb_curso, map => map.MapFrom(m => m.Curso))
-                    .ForMember(vm => vm.tb_instituicao, map => map.MapFrom(m => m.Instituicao));
+                /*cfg.CreateMap<AlunoMatriculadoDTO, AlunoMatriculado>()
+                    .ForMember(vm => vm.tb_usuario.id, map => map.MapFrom(m => m.Usuario))
+                    .ForMember(vm => vm.tb_curso.id, map => map.MapFrom(m => m.Curso))
+                    .ForMember(vm => vm.tb_instituicao.id, map => map.MapFrom(m => m.Instituicao));
                 cfg.CreateMap<AlunoMatriculado, AlunoMatriculadoDTO>()
-                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.tb_usuario))
-                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.tb_curso))
-                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.tb_instituicao));
+                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.tb_usuario.id))
+                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.tb_curso.id))
+                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.tb_instituicao.id));*/
 
 
                 cfg.CreateMap<UsuarioDTO, Model.Usuario>()

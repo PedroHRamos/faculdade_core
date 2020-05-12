@@ -14,7 +14,10 @@ namespace Feedback_facul.Model
     
     public partial class AlunoMatriculado
     {
-            
+        public int Usuario { get; set; }
+        public int Instituicao { get; set; }
+        public int Curso { get; set; }
+    
         public virtual Curso tb_curso { get; set; }
         public virtual Instituicao tb_instituicao { get; set; }
         public virtual Usuario tb_usuario { get; set; }

@@ -14,13 +14,6 @@ namespace Feedback_facul.Model
     
     public partial class Usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
-        {
-            this.tb_aluno_matriculado = new HashSet<AlunoMatriculado>();
-            this.tb_avaliacao = new HashSet<Avaliacao>();
-        }
-    
         public int id { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
@@ -30,10 +23,5 @@ namespace Feedback_facul.Model
         public string tipo_usuario { get; set; }
         public string username { get; set; }
         public string senha { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlunoMatriculado> tb_aluno_matriculado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Avaliacao> tb_avaliacao { get; set; }
     }
 }
