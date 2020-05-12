@@ -27,13 +27,13 @@ namespace Feedback_facul.Service
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<AlunoMatriculadoDTO, AlunoMatriculado>()
-                    .ForMember(vm => vm.Usuario, map => map.MapFrom(m => m.Usuario))
-                    .ForMember(vm => vm.Curso, map => map.MapFrom(m => m.Curso))
-                    .ForMember(vm => vm.Instituicao, map => map.MapFrom(m => m.Instituicao));
+                    .ForMember(vm => vm.tb_usuario, map => map.MapFrom(m => m.Usuario))
+                    .ForMember(vm => vm.tb_curso, map => map.MapFrom(m => m.Curso))
+                    .ForMember(vm => vm.tb_instituicao, map => map.MapFrom(m => m.Instituicao));
                 cfg.CreateMap<AlunoMatriculado, AlunoMatriculadoDTO>()
-                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.Usuario))
-                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.Curso))
-                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.Instituicao));
+                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.tb_usuario))
+                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.tb_curso))
+                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.tb_instituicao));
 
 
                 cfg.CreateMap<UsuarioDTO, Model.Usuario>()
