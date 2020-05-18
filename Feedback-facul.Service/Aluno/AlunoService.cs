@@ -12,15 +12,36 @@ namespace Feedback_facul.Service.Aluno
     public class AlunoService : IAlunoService
     {
         private readonly AlunoMatriculadoDal alunoDal = new AlunoMatriculadoDal();
-        public void SalvarAluno(AlunoMatriculadoDTO aluno)
+
+        public IEnumerable<AlunoMatriculadoDTO> ObterTodos()
         {
-            //AlunoMatriculado aluno = new AlunoMatriculado();
-            //aluno.id_usuario = usuario;
-            //aluno.id_instituicao = instituicao;
-            //aluno.id_curso = curso;
+            var alunos = alunoDal.ObterTodos();
+            return AutoMapper.Mapper.Map<IEnumerable<AlunoMatriculadoDTO>>(alunos);
+        }
+
+        public AlunoMatriculadoDTO Obter(int id)
+        {
+            var aluno = alunoDal.Obter(id);
+            return AutoMapper.Mapper.Map<AlunoMatriculadoDTO>(aluno);
+        }
+
+        public void Salvar(AlunoMatriculadoDTO aluno)
+        {
             var alunoMapeado = AutoMapper.Mapper.Map<AlunoMatriculado>(aluno);
             // Regra de negócio
             alunoDal.Incluir(alunoMapeado);
+        }
+
+        public AlunoMatriculadoDTO Editar(AlunoMatriculadoDTO aluno)
+        {
+            var alunoMapeado = AutoMapper.Mapper.Map<AlunoMatriculado>(aluno);
+            var alunoDto = alunoDal.Editar(alunoMapeado);
+            return AutoMapper.Mapper.Map<AlunoMatriculadoDTO>(alunoDto);
+        }
+
+        public bool Excluir(int id)
+        {
+            return alunoDal.Excluir(id);
         }
     }
 }

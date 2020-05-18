@@ -60,6 +60,11 @@
   <ItemGroup>
     <Compile Include="Aluno\AlunoService.cs" />
     <Compile Include="Aluno\IAlunoService.cs" />
+    <Compile Include="Avaliacao\AvaliacaoService.cs" />
+    <Compile Include="Curso\CursoService.cs" />
+    <Compile Include="Curso\ICursoService.cs" />
+    <Compile Include="Instituicao\IInstituicaoService.cs" />
+    <Compile Include="Instituicao\InstituicaoService.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="UsuarioFolder\IUsuarioService.cs" />
     <Compile Include="UsuarioFolder\UsuarioService.cs" />

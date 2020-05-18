@@ -36,7 +36,7 @@ namespace Feedback_facul.Service
                     .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.tb_instituicao.id));*/
 
 
-                cfg.CreateMap<UsuarioDTO, Model.Usuario>()
+                cfg.CreateMap<UsuarioDTO, Usuario>()
                     .ForMember(vm => vm.nome, map => map.MapFrom(m => m.nome))
                     .ForMember(vm => vm.cpf, map => map.MapFrom(m => m.cpf))
                     .ForMember(vm => vm.nascimento, map => map.MapFrom(m => m.nascimento))
@@ -45,7 +45,7 @@ namespace Feedback_facul.Service
                     .ForMember(vm => vm.username, map => map.MapFrom(m => m.username))
                     .ForMember(vm => vm.senha, map => map.MapFrom(m => m.senha));
 
-                cfg.CreateMap<Model.Usuario, UsuarioDTO>()
+                cfg.CreateMap<Usuario, UsuarioDTO>()
                     .ForMember(m => m.nome, map => map.MapFrom(vm => vm.nome))
                     .ForMember(m => m.cpf, map => map.MapFrom(vm => vm.cpf))
                     .ForMember(m => m.nascimento, map => map.MapFrom(vm => vm.nascimento))
@@ -54,6 +54,15 @@ namespace Feedback_facul.Service
                     .ForMember(m => m.username, map => map.MapFrom(vm => vm.username))
                     .ForMember(m => m.senha, map => map.MapFrom(vm => vm.senha));
 
+                cfg.CreateMap<AlunoMatriculado, AlunoMatriculadoDTO>()
+                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.Usuario))
+                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.Curso))
+                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.Instituicao));
+
+                cfg.CreateMap<AlunoMatriculadoDTO, AlunoMatriculado>()
+                    .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.Usuario))
+                    .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.Curso))
+                    .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.Instituicao));
             });
         }
     }

@@ -9,6 +9,10 @@ namespace Feedback_facul.Service.Aluno
 {
     public interface IAlunoService
     {
-        void SalvarAluno(AlunoMatriculadoDTO aluno);
+        IEnumerable<AlunoMatriculadoDTO> ObterTodos();
+        AlunoMatriculadoDTO Obter(int id);
+        void Salvar(AlunoMatriculadoDTO aluno);
+        AlunoMatriculadoDTO Editar(AlunoMatriculadoDTO aluno);
+        bool Excluir(int id);
     }
 }
