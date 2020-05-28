@@ -11,7 +11,7 @@ namespace Feedback_facul.Service.Aluno
 {
     public class AlunoService : IAlunoService
     {
-        private readonly AlunoMatriculadoDal alunoDal = new AlunoMatriculadoDal();
+        private readonly AlunoMatriculadoDao alunoDal = new AlunoMatriculadoDao();
 
         public IEnumerable<AlunoMatriculadoDTO> ObterTodos()
         {

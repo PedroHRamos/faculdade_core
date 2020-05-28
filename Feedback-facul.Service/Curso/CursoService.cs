@@ -10,7 +10,7 @@ namespace Feedback_facul.Service.Curso
 {
     public class CursoService : ICursoService
     {
-        private readonly CursoDal cursoDal = new CursoDal();
+        private readonly CursoDao cursoDal = new CursoDao();
 
         public IEnumerable<CursoDTO> ObterTodos() {
             var cursos = cursoDal.ObterTodos();

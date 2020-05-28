@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Feedback_facul.Data
 {
-    public class CursoDal
+    public class CursoDao
     {
 		public IEnumerable<Curso> ObterTodos()
 		{

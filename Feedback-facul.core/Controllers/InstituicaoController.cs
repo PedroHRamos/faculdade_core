@@ -10,9 +10,9 @@ namespace Feedback_facul.core.Controllers
 {
     public class InstituicaoController : ApiController
     {
-        public IEnumerable<InstituicaoDTO> ObterTodos()
-        {
-            return View();
-        }
+        //public IEnumerable<InstituicaoDTO> ObterTodos()
+        //{
+        //    return View();
+        //}
     }
 }

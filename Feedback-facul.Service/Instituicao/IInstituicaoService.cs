@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Feedback_facul.Service.Instituicao
 {
-    public class IInstituicaoService
+    public interface IInstituicaoService
     {
     }
 }

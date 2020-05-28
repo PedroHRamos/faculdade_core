@@ -173,8 +173,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlunoMatriculadoDal.cs" />
-    <Compile Include="CursoDal.cs" />
+    <Compile Include="AlunoMatriculadoDao.cs" />
+    <Compile Include="CursoDao.cs" />
     <Compile Include="UsuarioDao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

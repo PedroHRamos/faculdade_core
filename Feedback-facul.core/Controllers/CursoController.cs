@@ -13,9 +13,14 @@ namespace Feedback_facul.core.Controllers
     {
         private readonly ICursoService _cursoService = new CursoService();
 
-        public IEnumerable<CursoDTO> ObterTodos()
+        //public IEnumerable<CursoDTO> ObterTodos()
+        //{
+        //    return View();
+        //}
+
+        public CursoDTO Obter([FromUri] int id)
         {
-            return View();
+            return _cursoService.Obter(id);
         }
     }
 }
