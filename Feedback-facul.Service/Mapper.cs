@@ -63,6 +63,10 @@ namespace Feedback_facul.Service
                     .ForMember(m => m.Usuario, map => map.MapFrom(vm => vm.Usuario))
                     .ForMember(m => m.Curso, map => map.MapFrom(vm => vm.Curso))
                     .ForMember(m => m.Instituicao, map => map.MapFrom(vm => vm.Instituicao));
+
+                cfg.CreateMap<InstituicaoDTO, Model.Instituicao>();
+
+                cfg.CreateMap<Model.Instituicao, InstituicaoDTO>();
             });
         }
     }

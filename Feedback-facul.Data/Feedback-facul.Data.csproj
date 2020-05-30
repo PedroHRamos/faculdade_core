@@ -175,6 +175,7 @@
   <ItemGroup>
     <Compile Include="AlunoMatriculadoDao.cs" />
     <Compile Include="CursoDao.cs" />
+    <Compile Include="InstituicaoDao.cs" />
     <Compile Include="UsuarioDao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
