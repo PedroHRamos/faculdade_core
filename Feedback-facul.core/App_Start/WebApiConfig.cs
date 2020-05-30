@@ -25,7 +25,9 @@ namespace Feedback_facul.core
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                //routeTemplate: "api/{controller}/",
+                //defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

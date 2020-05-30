@@ -14,7 +14,6 @@ namespace Feedback_facul.core.Controllers
     {
         private readonly IUsuarioService usuarioService = new UsuarioService();
 
-        [Route("usuario")]
         [HttpPost]
         public void SalvarAluno([FromBody] UsuarioDTO usuario)
         {

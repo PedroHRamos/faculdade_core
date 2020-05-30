@@ -13,14 +13,12 @@ namespace Feedback_facul.core.Controllers
     {
         private readonly IInstituicaoService _instituicaoService = new InstituicaoService();
 
-        [Route("instituicao")]
         [HttpGet]
         public InstituicaoDTO Obter([FromUri] int id)
         {
             return _instituicaoService.Obter(id);
         }
 
-        [Route("instituicao")]
         [HttpGet]
         public IEnumerable<InstituicaoDTO> ObterTodos()
         {
