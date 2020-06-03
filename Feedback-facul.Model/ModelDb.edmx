@@ -104,6 +104,14 @@
           <Property Name="tb_curso_id" Type="int" Nullable="false" />
           <Property Name="tb_quesito_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tb_quesito_instituicao">
+          <Key>
+            <PropertyRef Name="id_instituicao" />
+            <PropertyRef Name="id_quesito" />
+          </Key>
+          <Property Name="id_instituicao" Type="int" Nullable="false" />
+          <Property Name="id_quesito" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tb_usuario">
           <Key>
             <PropertyRef Name="id" />
@@ -117,6 +125,7 @@
           <Property Name="tipo_usuario" Type="varchar" MaxLength="1" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="senha" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK__tb_aluno___id_cu__49C3F6B7">
           <End Role="tb_curso" Type="Self.tb_curso" Multiplicity="1" />
@@ -202,6 +211,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tb_quesit__id_in__75A278F5">
+          <End Role="tb_instituicao" Type="Self.tb_instituicao" Multiplicity="1" />
+          <End Role="tb_quesito_instituicao" Type="Self.tb_quesito_instituicao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_instituicao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_quesito_instituicao">
+              <PropertyRef Name="id_instituicao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_quesit__id_qu__76969D2E">
+          <End Role="tb_quesito" Type="Self.tb_quesito" Multiplicity="1" />
+          <End Role="tb_quesito_instituicao" Type="Self.tb_quesito_instituicao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_quesito">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_quesito_instituicao">
+              <PropertyRef Name="id_quesito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tb_consistencia_categoria_tb_categoria">
           <End Role="tb_categoria" Type="Self.tb_categoria" Multiplicity="1" />
           <End Role="tb_consistencia_categoria" Type="Self.tb_consistencia_categoria" Multiplicity="*" />
@@ -261,6 +294,7 @@
           <EntitySet Name="tb_parger" EntityType="Self.tb_parger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_quesito" EntityType="Self.tb_quesito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_quesito_curso" EntityType="Self.tb_quesito_curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_quesito_instituicao" EntityType="Self.tb_quesito_instituicao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_usuario" EntityType="Self.tb_usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__tb_aluno___id_cu__49C3F6B7" Association="Self.FK__tb_aluno___id_cu__49C3F6B7">
             <End Role="tb_curso" EntitySet="tb_curso" />
@@ -289,6 +323,14 @@
           <AssociationSet Name="FK__tb_instit__id_ca__412EB0B6" Association="Self.FK__tb_instit__id_ca__412EB0B6">
             <End Role="tb_categoria" EntitySet="tb_categoria" />
             <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_quesit__id_in__75A278F5" Association="Self.FK__tb_quesit__id_in__75A278F5">
+            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
+            <End Role="tb_quesito_instituicao" EntitySet="tb_quesito_instituicao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_quesit__id_qu__76969D2E" Association="Self.FK__tb_quesit__id_qu__76969D2E">
+            <End Role="tb_quesito" EntitySet="tb_quesito" />
+            <End Role="tb_quesito_instituicao" EntitySet="tb_quesito_instituicao" />
           </AssociationSet>
           <AssociationSet Name="FK_tb_consistencia_categoria_tb_categoria" Association="Self.FK_tb_consistencia_categoria_tb_categoria">
             <End Role="tb_categoria" EntitySet="tb_categoria" />
@@ -389,6 +431,7 @@
           <NavigationProperty Name="tb_aluno_matriculado" Relationship="Self.FK__tb_aluno___id_in__48CFD27E" FromRole="tb_instituicao" ToRole="tb_aluno_matriculado" />
           <NavigationProperty Name="tb_avaliacao" Relationship="Self.FK__tb_avalia__id_in__5441852A" FromRole="tb_instituicao" ToRole="tb_avaliacao" />
           <NavigationProperty Name="tb_categoria" Relationship="Self.FK__tb_instit__id_ca__412EB0B6" FromRole="tb_instituicao" ToRole="tb_categoria" />
+          <NavigationProperty Name="tb_quesito" Relationship="glassDbModel.tb_quesito_instituicao" FromRole="Instituicao" ToRole="Quesito" />
         </EntityType>
         <EntityType Name="Parger">
           <Key>
@@ -409,6 +452,7 @@
           <Property Name="situacao" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tb_avaliacao" Relationship="Self.FK__tb_avalia__id_qu__52593CB8" FromRole="tb_quesito" ToRole="tb_avaliacao" />
           <NavigationProperty Name="tb_curso" Relationship="Self.tb_quesito_curso" FromRole="tb_quesito" ToRole="tb_curso" />
+          <NavigationProperty Name="tb_instituicao" Relationship="glassDbModel.tb_quesito_instituicao" FromRole="Quesito" ToRole="Instituicao" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -423,6 +467,7 @@
           <Property Name="tipo_usuario" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="senha" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__tb_aluno___id_cu__49C3F6B7">
           <End Role="tb_curso" Type="glassDbModel.Curso" Multiplicity="1" />
@@ -562,7 +607,15 @@
             <End Role="tb_curso" EntitySet="tb_curso" />
             <End Role="tb_quesito" EntitySet="tb_quesito" />
           </AssociationSet>
+          <AssociationSet Name="tb_quesito_instituicao" Association="glassDbModel.tb_quesito_instituicao">
+            <End Role="Instituicao" EntitySet="tb_instituicao" />
+            <End Role="Quesito" EntitySet="tb_quesito" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="tb_quesito_instituicao">
+          <End Type="glassDbModel.Instituicao" Role="Instituicao" Multiplicity="*" />
+          <End Type="glassDbModel.Quesito" Role="Quesito" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -659,7 +712,8 @@
     <EntitySetMapping Name="tb_usuario">
       <EntityTypeMapping TypeName="IsTypeOf(glassDbModel.Usuario)">
         <MappingFragment StoreEntitySet="tb_usuario">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nome" ColumnName="nome" />
           <ScalarProperty Name="cpf" ColumnName="cpf" />
           <ScalarProperty Name="nascimento" ColumnName="nascimento" />
@@ -687,6 +741,14 @@
         <ScalarProperty Name="id" ColumnName="tb_quesito_id" />
       </EndProperty>
     </AssociationSetMapping>
+          <AssociationSetMapping Name="tb_quesito_instituicao" TypeName="glassDbModel.tb_quesito_instituicao" StoreEntitySet="tb_quesito_instituicao">
+            <EndProperty Name="Quesito">
+              <ScalarProperty Name="id" ColumnName="id_quesito" />
+            </EndProperty>
+            <EndProperty Name="Instituicao">
+              <ScalarProperty Name="id" ColumnName="id_instituicao" />
+            </EndProperty>
+          </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

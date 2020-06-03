@@ -12,33 +12,21 @@ namespace Feedback_facul.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Instituicao
+    public partial class tb_categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Instituicao()
+        public tb_categoria()
         {
-            this.tb_aluno_matriculado = new HashSet<AlunoMatriculado>();
-            this.tb_avaliacao = new HashSet<Avaliacao>();
-            this.tb_quesito = new HashSet<Quesito>();
+            this.tb_instituicao = new HashSet<tb_instituicao>();
+            this.tb_consistencia = new HashSet<tb_consistencia>();
         }
     
         public int id { get; set; }
-        public string nome { get; set; }
         public string descricao { get; set; }
-        public string estado { get; set; }
-        public string cidade { get; set; }
-        public string bairro { get; set; }
-        public string rua { get; set; }
-        public string campus { get; set; }
-        public string imagem { get; set; }
-        public Nullable<int> id_categoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlunoMatriculado> tb_aluno_matriculado { get; set; }
+        public virtual ICollection<tb_instituicao> tb_instituicao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Avaliacao> tb_avaliacao { get; set; }
-        public virtual Categoria tb_categoria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Quesito> tb_quesito { get; set; }
+        public virtual ICollection<tb_consistencia> tb_consistencia { get; set; }
     }
 }

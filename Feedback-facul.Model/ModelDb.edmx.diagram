@@ -23,6 +23,7 @@
         <AssociationConnector Association="glassDbModel.FK__tb_instit__id_ca__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.tb_consistencia_categoria" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.tb_quesito_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="glassDbModel.tb_quesito_instituicao" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

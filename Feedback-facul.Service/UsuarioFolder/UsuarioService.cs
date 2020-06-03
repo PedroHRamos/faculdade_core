@@ -49,6 +49,16 @@ namespace Feedback_facul.Service.UsuarioFolder
                     throw new System.ArgumentException("Parâmetro Inválido", "senha");
                 }
 
+                if (String.IsNullOrEmpty(usuario.estado))
+                {
+                    throw new System.ArgumentException("Parâmetro Inválido", "username");
+                }
+
+                if (String.IsNullOrEmpty(usuario.cidade))
+                {
+                    throw new System.ArgumentException("Parâmetro Inválido", "senha");
+                }
+
 
                 usuarioDao.Incluir(usuarioMapeado);
             }

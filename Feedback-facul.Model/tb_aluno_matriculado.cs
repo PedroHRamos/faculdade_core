@@ -12,17 +12,14 @@ namespace Feedback_facul.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class tb_aluno_matriculado
     {
-        public int id { get; set; }
-        public string nome { get; set; }
-        public string cpf { get; set; }
-        public System.DateTime nascimento { get; set; }
-        public string estado { get; set; }
-        public string cidade { get; set; }
-        public string tipo_usuario { get; set; }
-        public string username { get; set; }
-        public string senha { get; set; }
-        public string email { get; set; }
+        public int Usuario { get; set; }
+        public int Instituicao { get; set; }
+        public int Curso { get; set; }
+    
+        public virtual tb_curso tb_curso { get; set; }
+        public virtual tb_instituicao tb_instituicao { get; set; }
+        public virtual tb_usuario tb_usuario { get; set; }
     }
 }

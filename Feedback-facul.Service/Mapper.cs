@@ -43,6 +43,7 @@ namespace Feedback_facul.Service
                     .ForMember(vm => vm.estado, map => map.MapFrom(m => m.estado))
                     .ForMember(vm => vm.cidade, map => map.MapFrom(m => m.cidade))
                     .ForMember(vm => vm.username, map => map.MapFrom(m => m.username))
+                    .ForMember(vm => vm.email, map => map.MapFrom(m => m.email))
                     .ForMember(vm => vm.senha, map => map.MapFrom(m => m.senha));
 
                 cfg.CreateMap<Usuario, UsuarioDTO>()
@@ -52,6 +53,7 @@ namespace Feedback_facul.Service
                     .ForMember(m => m.estado, map => map.MapFrom(vm => vm.estado))
                     .ForMember(m => m.cidade, map => map.MapFrom(vm => vm.cidade))
                     .ForMember(m => m.username, map => map.MapFrom(vm => vm.username))
+                    .ForMember(m => m.email, map => map.MapFrom(vm => vm.email))
                     .ForMember(m => m.senha, map => map.MapFrom(vm => vm.senha));
 
                 cfg.CreateMap<AlunoMatriculado, AlunoMatriculadoDTO>()

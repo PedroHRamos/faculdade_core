@@ -15,6 +15,7 @@ namespace Feedback_facul.DTO
         public string estado { get; set; }
         public string cidade { get; set; }
         public string username { get; set; }
+        public string email { get; set; }
         public string senha { get; set; }
 
     }

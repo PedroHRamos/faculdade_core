@@ -12,17 +12,11 @@ namespace Feedback_facul.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class tb_parger
     {
         public int id { get; set; }
-        public string nome { get; set; }
-        public string cpf { get; set; }
-        public System.DateTime nascimento { get; set; }
-        public string estado { get; set; }
-        public string cidade { get; set; }
-        public string tipo_usuario { get; set; }
-        public string username { get; set; }
-        public string senha { get; set; }
-        public string email { get; set; }
+        public int parger_cod { get; set; }
+        public string descricao { get; set; }
+        public string situacao { get; set; }
     }
 }

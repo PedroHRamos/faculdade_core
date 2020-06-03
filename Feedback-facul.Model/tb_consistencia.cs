@@ -12,26 +12,20 @@ namespace Feedback_facul.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Quesito
+    public partial class tb_consistencia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Quesito()
+        public tb_consistencia()
         {
-            this.tb_avaliacao = new HashSet<Avaliacao>();
-            this.tb_curso = new HashSet<Curso>();
-            this.tb_instituicao = new HashSet<Instituicao>();
+            this.tb_categoria = new HashSet<tb_categoria>();
         }
     
         public int id { get; set; }
-        public string nome { get; set; }
+        public int consistencia_cod { get; set; }
         public string descricao { get; set; }
         public string situacao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Avaliacao> tb_avaliacao { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Curso> tb_curso { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Instituicao> tb_instituicao { get; set; }
+        public virtual ICollection<tb_categoria> tb_categoria { get; set; }
     }
 }
