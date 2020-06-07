@@ -20,10 +20,6 @@ namespace Feedback_facul.Model
         public int estrelas { get; set; }
         public string comentario { get; set; }
         public System.DateTime data_inicial { get; set; }
-        public Nullable<System.DateTime> data_ultima_atualizacao { get; set; }
-    
-        public virtual Instituicao tb_instituicao { get; set; }
-        public virtual Quesito tb_quesito { get; set; }
-        public virtual Usuario tb_usuario { get; set; }
+        public System.DateTime data_ultima_atualizacao { get; set; }
     }
 }

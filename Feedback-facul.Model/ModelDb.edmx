@@ -26,8 +26,8 @@
           <Property Name="id_instituicao" Type="int" Nullable="false" />
           <Property Name="estrelas" Type="int" Nullable="false" />
           <Property Name="comentario" Type="varchar" MaxLength="250" />
-          <Property Name="data_inicial" Type="datetime" Nullable="false" />
-          <Property Name="data_ultima_atualizacao" Type="datetime" />
+          <Property Name="data_inicial" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="data_ultima_atualizacao" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_categoria">
           <Key>
@@ -211,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_quesit__id_in__75A278F5">
+        <Association Name="FK__tb_quesit__id_in__0A9D95DB">
           <End Role="tb_instituicao" Type="Self.tb_instituicao" Multiplicity="1" />
           <End Role="tb_quesito_instituicao" Type="Self.tb_quesito_instituicao" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,7 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tb_quesit__id_qu__76969D2E">
+        <Association Name="FK__tb_quesit__id_qu__0B91BA14">
           <End Role="tb_quesito" Type="Self.tb_quesito" Multiplicity="1" />
           <End Role="tb_quesito_instituicao" Type="Self.tb_quesito_instituicao" Multiplicity="*" />
           <ReferentialConstraint>
@@ -324,11 +324,11 @@
             <End Role="tb_categoria" EntitySet="tb_categoria" />
             <End Role="tb_instituicao" EntitySet="tb_instituicao" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_quesit__id_in__75A278F5" Association="Self.FK__tb_quesit__id_in__75A278F5">
+          <AssociationSet Name="FK__tb_quesit__id_in__0A9D95DB" Association="Self.FK__tb_quesit__id_in__0A9D95DB">
             <End Role="tb_instituicao" EntitySet="tb_instituicao" />
             <End Role="tb_quesito_instituicao" EntitySet="tb_quesito_instituicao" />
           </AssociationSet>
-          <AssociationSet Name="FK__tb_quesit__id_qu__76969D2E" Association="Self.FK__tb_quesit__id_qu__76969D2E">
+          <AssociationSet Name="FK__tb_quesit__id_qu__0B91BA14" Association="Self.FK__tb_quesit__id_qu__0B91BA14">
             <End Role="tb_quesito" EntitySet="tb_quesito" />
             <End Role="tb_quesito_instituicao" EntitySet="tb_quesito_instituicao" />
           </AssociationSet>
@@ -377,11 +377,8 @@
           <Property Name="id_instituicao" Type="Int32" Nullable="false" />
           <Property Name="estrelas" Type="Int32" Nullable="false" />
           <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="data_inicial" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="data_ultima_atualizacao" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tb_instituicao" Relationship="Self.FK__tb_avalia__id_in__5441852A" FromRole="tb_avaliacao" ToRole="tb_instituicao" />
-          <NavigationProperty Name="tb_quesito" Relationship="Self.FK__tb_avalia__id_qu__52593CB8" FromRole="tb_avaliacao" ToRole="tb_quesito" />
-          <NavigationProperty Name="tb_usuario" Relationship="Self.FK__tb_avalia__id_us__534D60F1" FromRole="tb_avaliacao" ToRole="tb_usuario" />
+          <Property Name="data_inicial" Type="DateTime" Precision="7" Nullable="false" />
+          <Property Name="data_ultima_atualizacao" Type="DateTime" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -506,8 +503,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__tb_avalia__id_in__5441852A">
-          <End Role="tb_instituicao" Type="glassDbModel.Instituicao" Multiplicity="1" />
-          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <End Type="glassDbModel.Instituicao" Multiplicity="1" Role="tb_instituicao" />
+          <End Type="glassDbModel.Avaliacao" Multiplicity="*" Role="tb_avaliacao" />
           <ReferentialConstraint>
             <Principal Role="tb_instituicao">
               <PropertyRef Name="id" />
@@ -518,8 +515,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__tb_avalia__id_qu__52593CB8">
-          <End Role="tb_quesito" Type="glassDbModel.Quesito" Multiplicity="1" />
-          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <End Type="glassDbModel.Quesito" Multiplicity="1" Role="tb_quesito" />
+          <End Type="glassDbModel.Avaliacao" Multiplicity="*" Role="tb_avaliacao" />
           <ReferentialConstraint>
             <Principal Role="tb_quesito">
               <PropertyRef Name="id" />
@@ -530,8 +527,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__tb_avalia__id_us__534D60F1">
-          <End Role="tb_usuario" Type="glassDbModel.Usuario" Multiplicity="1" />
-          <End Role="tb_avaliacao" Type="glassDbModel.Avaliacao" Multiplicity="*" />
+          <End Type="glassDbModel.Usuario" Multiplicity="1" Role="tb_usuario" />
+          <End Type="glassDbModel.Avaliacao" Multiplicity="*" Role="tb_avaliacao" />
           <ReferentialConstraint>
             <Principal Role="tb_usuario">
               <PropertyRef Name="id" />
@@ -584,16 +581,16 @@
             <End Role="tb_aluno_matriculado" EntitySet="tb_aluno_matriculado" />
           </AssociationSet>
           <AssociationSet Name="FK__tb_avalia__id_in__5441852A" Association="Self.FK__tb_avalia__id_in__5441852A">
-            <End Role="tb_instituicao" EntitySet="tb_instituicao" />
-            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+            <End EntitySet="tb_instituicao" Role="tb_instituicao" />
+            <End EntitySet="tb_avaliacao" Role="tb_avaliacao" />
           </AssociationSet>
           <AssociationSet Name="FK__tb_avalia__id_qu__52593CB8" Association="Self.FK__tb_avalia__id_qu__52593CB8">
-            <End Role="tb_quesito" EntitySet="tb_quesito" />
-            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+            <End EntitySet="tb_quesito" Role="tb_quesito" />
+            <End EntitySet="tb_avaliacao" Role="tb_avaliacao" />
           </AssociationSet>
           <AssociationSet Name="FK__tb_avalia__id_us__534D60F1" Association="Self.FK__tb_avalia__id_us__534D60F1">
-            <End Role="tb_usuario" EntitySet="tb_usuario" />
-            <End Role="tb_avaliacao" EntitySet="tb_avaliacao" />
+            <End EntitySet="tb_usuario" Role="tb_usuario" />
+            <End EntitySet="tb_avaliacao" Role="tb_avaliacao" />
           </AssociationSet>
           <AssociationSet Name="FK__tb_instit__id_ca__412EB0B6" Association="Self.FK__tb_instit__id_ca__412EB0B6">
             <End Role="tb_categoria" EntitySet="tb_categoria" />

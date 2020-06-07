@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feedback_facul.Service.Quesito
+namespace Feedback_facul.Service.QuesitoServ
 {
-    interface IQuesitoService
-    {
+    public interface IQuesitoService
+    {    
         IEnumerable<QuesitoDTO> ObterTodos();
-        QuesitoDTO ObterPorInstituicao(int id);
+        QuesitoDTO Obter(int id);
+
     }
 }

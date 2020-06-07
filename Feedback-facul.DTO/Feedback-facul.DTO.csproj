@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlunoMatriculadoDTO.cs" />
+    <Compile Include="AvaliacaoDTO.cs" />
     <Compile Include="CursoDTO.cs" />
     <Compile Include="InstituicaoDTO.cs" />
+    <Compile Include="QuesitoDTO.cs" />
     <Compile Include="UsuarioDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

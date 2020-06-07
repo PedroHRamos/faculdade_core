@@ -61,11 +61,14 @@
     <Compile Include="Aluno\AlunoService.cs" />
     <Compile Include="Aluno\IAlunoService.cs" />
     <Compile Include="Avaliacao\AvaliacaoService.cs" />
+    <Compile Include="Avaliacao\IAvaliacaoService.cs" />
     <Compile Include="Curso\CursoService.cs" />
     <Compile Include="Curso\ICursoService.cs" />
     <Compile Include="Instituicao\IInstituicaoService.cs" />
     <Compile Include="Instituicao\InstituicaoService.cs" />
     <Compile Include="Mapper.cs" />
+    <Compile Include="QuesitoServ\IQuesitoService.cs" />
+    <Compile Include="QuesitoServ\QuesitoService.cs" />
     <Compile Include="UsuarioFolder\IUsuarioService.cs" />
     <Compile Include="UsuarioFolder\UsuarioService.cs" />
   </ItemGroup>

@@ -17,9 +17,9 @@
         <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_cu__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_in__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.FK__tb_aluno___id_us__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_in__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_qu__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="glassDbModel.FK__tb_avalia__id_us__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="glassDbModel.FK__tb_avalia__id_in__5441852A" />
+        <AssociationConnector ManuallyRouted="false" Association="glassDbModel.FK__tb_avalia__id_qu__52593CB8" />
+        <AssociationConnector ManuallyRouted="false" Association="glassDbModel.FK__tb_avalia__id_us__534D60F1" />
         <AssociationConnector Association="glassDbModel.FK__tb_instit__id_ca__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.tb_consistencia_categoria" ManuallyRouted="false" />
         <AssociationConnector Association="glassDbModel.tb_quesito_curso" ManuallyRouted="false" />

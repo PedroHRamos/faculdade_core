@@ -26,5 +26,20 @@ namespace Feedback_facul.Data
 			}
 		}
 
+		public Quesito Obter(int id)
+		{
+			try
+			{
+				using (var context = new glassDbEntities())
+				{
+					return context.tb_quesito.Where(x => x.id == id).Single();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.ToString());
+			}
+		}
+
 	}
 }
