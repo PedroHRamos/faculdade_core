@@ -1,4 +1,5 @@
 ﻿using Feedback_facul.DTO;
+using Feedback_facul.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,7 @@ namespace Feedback_facul.Service.UsuarioFolder
 {
     public interface IUsuarioService
     {
-
+        Usuario Obter(string username, string password);
         string SalvarUsuario(UsuarioDTO usuario);
-
     }
 }

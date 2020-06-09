@@ -14,6 +14,11 @@ namespace Feedback_facul.Service.UsuarioFolder
 
         private readonly UsuarioDao usuarioDao = new UsuarioDao();
 
+        public Usuario Obter(string username, string password)
+        {
+            return usuarioDao.Obter(username, password);
+        }
+
         public string SalvarUsuario(UsuarioDTO usuario)
         {
 
