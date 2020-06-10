@@ -9,13 +9,13 @@ namespace Feedback_facul.Data
 {
     public class UsuarioDao
     {
-		public Usuario Obter(string username, string password)
+		public Usuario Obter(string email, string password)
 		{
 			try
 			{
 				using (var context = new glassDbEntities())
 				{
-					return context.tb_usuario.Where(x => x.username == username && x.senha == password).Single();
+					return context.tb_usuario.Where(x => x.email == email && x.senha == password).Single();
 				}
 			}
 			catch (Exception ex)

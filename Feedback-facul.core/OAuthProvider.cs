@@ -14,14 +14,16 @@ namespace Feedback_facul.core
         private readonly IUsuarioService _usuario = new UsuarioService();
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
             return Task.Factory.StartNew(() => 
             {
-                string username = context.UserName;
+                string email = context.UserName;
                 string password = Regex.Replace(context.Password, @"[\f\n\r\t\v]", "");
                 //string password = JObject.Parse(context.Password); ;
                 
 
-                Usuario user = _usuario.Obter(username, password);
+                Usuario user = _usuario.Obter(email, password);
 
                 if(user != null)
                 {
