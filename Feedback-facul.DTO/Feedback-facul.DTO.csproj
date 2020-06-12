@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="AlunoMatriculadoDTO.cs" />
     <Compile Include="AvaliacaoDTO.cs" />
+    <Compile Include="AvaliacaoMediaDTO.cs" />
     <Compile Include="CursoDTO.cs" />
     <Compile Include="InstituicaoDTO.cs" />
     <Compile Include="QuesitoDTO.cs" />

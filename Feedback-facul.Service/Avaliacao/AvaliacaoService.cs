@@ -68,6 +68,13 @@ namespace Feedback_facul.Service.Avaliacao
 
             avaliacaoDao.Incluir(avaliacaoMapeada);
         }
+
+        public IEnumerable<AvaliacaoMediaDTO> CarregaAvaliacoes(int id_instituicao)
+        {
+            var quesitos = avaliacaoDao.MediaAvaliacoes(id_instituicao);
+            return quesitos;
+        }
+
     }
 
 }

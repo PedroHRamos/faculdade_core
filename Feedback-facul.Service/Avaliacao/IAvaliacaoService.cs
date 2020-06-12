@@ -11,6 +11,7 @@ namespace Feedback_facul.Service.Avaliacao
     {
 
         string SalvarAvaliacoes(IEnumerable<AvaliacaoDTO> avaliacoes);
+        IEnumerable<AvaliacaoMediaDTO> CarregaAvaliacoes(int id_instituicao);
 
     }
 }

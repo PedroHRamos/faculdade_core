@@ -164,6 +164,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Feedback-facul.DTO\Feedback-facul.DTO.csproj">
+      <Project>{695B6911-B778-4111-BF22-8351DB5B7509}</Project>
+      <Name>Feedback-facul.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Feedback-facul.Model\Feedback-facul.Model.csproj">
       <Project>{eef016da-d880-4074-a335-990694df91d8}</Project>
       <Name>Feedback-facul.Model</Name>

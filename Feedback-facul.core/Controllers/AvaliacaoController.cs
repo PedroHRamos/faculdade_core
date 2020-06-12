@@ -24,5 +24,11 @@ namespace Feedback_facul.core.Controllers
             avaliacaoService.SalvarAvaliacoes(avaliacaoDTO);
         }
 
+        [HttpGet]
+        public IEnumerable<AvaliacaoMediaDTO> CarregarAvaliacoes([FromUri] int id_instituicao)
+        {
+            return avaliacaoService.CarregaAvaliacoes(id_instituicao);
+        }
+
     }
 }
