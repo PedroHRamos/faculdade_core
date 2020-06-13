@@ -24,6 +24,21 @@ namespace Feedback_facul.Data
 			}
 		}
 
+		public Usuario Obter(int id)
+		{
+			try
+			{
+				using (var context = new glassDbEntities())
+				{
+					return context.tb_usuario.Where(x => x.id == id).Single();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.ToString());
+			}
+		}
+
 		public bool Incluir(Usuario usuario)
 		{
 			try

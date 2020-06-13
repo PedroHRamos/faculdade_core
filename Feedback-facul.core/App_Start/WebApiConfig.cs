@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,9 @@ namespace Feedback_facul.core
             EnableCorsAttribute cors = new EnableCorsAttribute(origins: "*", headers: "*", methods: "*");
             cors.ExposedHeaders.Add("Content-Disposition");
             config.EnableCors(cors);
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            
 
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();

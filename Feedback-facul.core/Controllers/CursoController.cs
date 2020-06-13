@@ -18,6 +18,8 @@ namespace Feedback_facul.core.Controllers
         //    return View();
         //}
 
+        [HttpGet]
+        [Authorize]
         public CursoDTO Obter([FromUri] int id)
         {
             return _cursoService.Obter(id);

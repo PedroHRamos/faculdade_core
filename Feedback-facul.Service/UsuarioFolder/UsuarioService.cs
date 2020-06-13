@@ -19,7 +19,12 @@ namespace Feedback_facul.Service.UsuarioFolder
             return usuarioDao.Obter(email, password);
         }
 
-        public string SalvarUsuario(UsuarioDTO usuario)
+        public UsuarioDTO ObterDetalhe(int id)
+        {
+            return AutoMapper.Mapper.Map<UsuarioDTO>(usuarioDao.Obter(id));
+        }
+
+        public bool SalvarUsuario(UsuarioDTO usuario)
         {
 
             try
@@ -65,14 +70,12 @@ namespace Feedback_facul.Service.UsuarioFolder
                 }
 
 
-                usuarioDao.Incluir(usuarioMapeado);
+                return usuarioDao.Incluir(usuarioMapeado);
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return false;
             }
-
-            return "";
         }
     }
 }

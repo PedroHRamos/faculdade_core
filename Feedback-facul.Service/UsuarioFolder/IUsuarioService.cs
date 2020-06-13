@@ -11,6 +11,7 @@ namespace Feedback_facul.Service.UsuarioFolder
     public interface IUsuarioService
     {
         Usuario Obter(string username, string password);
-        string SalvarUsuario(UsuarioDTO usuario);
+        bool SalvarUsuario(UsuarioDTO usuario);
+        UsuarioDTO ObterDetalhe(int id);
     }
 }
