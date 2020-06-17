@@ -19,8 +19,8 @@ namespace Feedback_facul.core.Controllers
         [Authorize]
         public void SalvarAvaliacoes([FromBody] IEnumerable<AvaliacaoDTO> avaliacaoDTO)
         {
-            IOwinContext ctx = HttpContext.Current.GetOwinContext();
-            string id = ctx.Authentication.User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
+            //IOwinContext ctx = HttpContext.Current.GetOwinContext();
+            //string id = ctx.Authentication.User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
             avaliacaoService.SalvarAvaliacoes(avaliacaoDTO);
         }
 
