@@ -10,7 +10,6 @@ namespace Feedback_facul.DTO
     {
         public int id_quesito { get; set; }
         public double media { get; set; }
-        public string nome { get; set; }
 
     }
 }

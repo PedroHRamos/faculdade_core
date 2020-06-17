@@ -48,7 +48,6 @@ namespace Feedback_facul.Data
 						var avaliacaoMedia = new AvaliacaoMediaDTO();
 						avaliacaoMedia.id_quesito = quesito.id;
 						avaliacaoMedia.media = context.tb_avaliacao.Where(x => x.id_instituicao == idInstituicao).Where(y => y.id_quesito == quesito.id).Average(c => c.estrelas);
-						avaliacaoMedia.nome = context.tb_quesito.FirstOrDefault(x => x.id == quesito.id).nome;
 						avaliacoes.Add(avaliacaoMedia);
 					}
 
