@@ -22,7 +22,6 @@ namespace Feedback_facul.core
             config.EnableCors(cors);
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            
 
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();

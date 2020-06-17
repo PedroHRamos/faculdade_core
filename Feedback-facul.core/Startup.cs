@@ -30,7 +30,7 @@ namespace Feedback_facul.core
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = "http://mysite.com", //some string, normally web url,  
                         ValidAudience = "http://mysite.com",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_secret_key_12345"))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw=="))
                     }
                 });
         }
